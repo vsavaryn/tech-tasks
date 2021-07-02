@@ -1,28 +1,30 @@
 import React, { useState } from "react";
 import { InputText } from "primereact/inputtext";
-import { InputTextarea } from "primereact/inputtextarea";
+import { InputTextarea } from "primereact/inputtextarea"
 
-const isInteger = value => {
-  return Number.isInteger(+value);
-}
+const isPalindrome = (str) => {
+  str = str.replace(/[^a-z0-9]/i, "").toLowerCase()
+  return str.length > 0 && Array.from(str).reverse().join("") === str;
+};
 
-const code = `const isInteger = value => {
-  return Number.isInteger(+value);
-}`;
+const code = `const isPalindrome = (str) => {
+  str = str.replace(/[^a-z0-9]/i, "").toLowerCase()
+  return str.length > 0 && Array.from(str).reverse().join("") === str;
+};`;
 
-export default function IsInteger() {
+export default function IsPalindrome() {
   const [value, setValue] = useState("");
 
   return (
     <>
       <div className="p-field">
         <label htmlFor="value" className="p-d-block">
-          Enter text to if it Integer
+          Enter text to check it is Polindrome
         </label>
         <span className="p-input-icon-right">
           <i
             className="pi pi-check-circle"
-            style={{ color: isInteger(value) ? "green" : "red" }}
+            style={{ color: isPalindrome(value) ? "green" : "red" }}
           />
           <InputText
             id="value"
